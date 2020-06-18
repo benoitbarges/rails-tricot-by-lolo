@@ -48,12 +48,6 @@ ActiveRecord::Schema.define(version: 2020_06_18_120643) do
     t.index ["user_id"], name: "index_addresses_on_user_id"
   end
 
-  create_table "categories", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "order_products", force: :cascade do |t|
     t.bigint "order_id", null: false
     t.bigint "product_id", null: false
@@ -82,10 +76,9 @@ ActiveRecord::Schema.define(version: 2020_06_18_120643) do
     t.string "size"
     t.text "description"
     t.boolean "available"
+    t.string "category"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "category_id", null: false
-    t.index ["category_id"], name: "index_products_on_category_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -110,5 +103,4 @@ ActiveRecord::Schema.define(version: 2020_06_18_120643) do
   add_foreign_key "order_products", "products"
   add_foreign_key "orders", "addresses"
   add_foreign_key "orders", "users"
-  add_foreign_key "products", "categories"
 end

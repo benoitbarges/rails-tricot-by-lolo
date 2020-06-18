@@ -6,6 +6,7 @@ class CreateProducts < ActiveRecord::Migration[6.0]
       t.string :size
       t.text :description
       t.boolean :available
+      t.string :category
 
       t.timestamps
     end

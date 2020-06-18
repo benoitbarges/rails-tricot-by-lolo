@@ -5,11 +5,31 @@ class ProductPolicy < ApplicationPolicy
     end
   end
 
+  def index?
+    return true
+  end
+
+  def show?
+    return true
+  end
+
   def new?
     user.admin
   end
 
   def create?
+    user.admin
+  end
+
+  def edit?
+    user.admin
+  end
+
+  def update?
+    user.admin
+  end
+
+  def destroy?
     user.admin
   end
 end

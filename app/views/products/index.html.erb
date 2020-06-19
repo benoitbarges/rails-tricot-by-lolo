@@ -4,5 +4,6 @@
     <h1><%= product.price %></h1>
     <h1><%= product.category %></h1>
     <h1><%= product.size %></h1>
+    <%= cl_image_tag product.photo.key, height: 300, width: 400, crop: :fill if product.photo.attached?%>
   <% end %>
 </div>

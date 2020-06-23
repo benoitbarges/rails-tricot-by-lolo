@@ -1,7 +1,27 @@
 .banner {
-  height: 80vh;
+  height: 60vh;
   background-size: cover;
   background-attachment: fixed;
 }
 
+@media (max-width: 1024px) {
+  .banner {
+    height: 400px;
+    background-size: contain;
+  }
+}
 
+@media (max-width: 768px) {
+  .banner {
+    height: 40vh;
+    background-size: contain;
+  }
+}
+
+
+@media (max-width: 576px) {
+  .banner {
+    height: 40vh;
+    background-size: contain;
+  }
+}

@@ -17,9 +17,3 @@ const navbarScrolled = () => {
 }
 
 export { navbarScrolled };
-
-
-const location = window.location.pathname;
-    if (location.includes("/earnings/new")) {
-      this.keepEarningOpen()
-    }

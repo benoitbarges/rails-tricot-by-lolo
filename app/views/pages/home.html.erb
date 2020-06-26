@@ -1,12 +1,13 @@
 <%= render'shared/banner' %>
-<div class="container mt-5 mb-5">
-  <div class="row">
+<div class="container mt-5 mb-5 home-container">
     <% @products.each do |product| %>
-      <div class="col-sm-12 col-md-6 col-lg-4">
-          <div class="product-card" style="background-image: url('<%= cl_image_path product.photo.key %>')">
-
-          </div>
-      </div>
+        <%= link_to product_path(product), class: "product-card" do %>
+          <div class="product-photo" style="background-image: url('<%= cl_image_path product.photo.key %>')">
+            <div class="product-infos">
+                <h1><%= product.name.capitalize %></h1>
+                <p><%= product.price %>€</p>
+            </div>
+        </div>
+      <% end %>
     <% end %>
-  </div>
 </div>

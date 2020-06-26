@@ -1,9 +1,19 @@
 <div class="container">
-  <div>
-    <div class="product-photo-show">
-      <%= cl_image_tag @product.photo.key %>
+  <% if current_user.admin? %>
+    <%= link_to "Editer", edit_product_path(@product) %>
+  <% end %>
+  <div class="show-container">
+    <div class="product-photo-show" style="background-image: url('<%= cl_image_path @product.photo.key %>')">
     </div>
     <div class="product-info-show">
+      <h1><%= @product.name.capitalize %></h1>
+      <% if @product.available %>
+        <p>Disponible</p>
+      <% else %>
+        <p>Non disponible</p>
+      <% end %>
+      <p><%= @product.price %>€</p>
+      <p><%= @product.description %></p>
 
     </div>
   </div>

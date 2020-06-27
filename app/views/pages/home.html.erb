@@ -4,8 +4,8 @@
         <%= link_to product_path(product), class: "product-card" do %>
           <div class="product-photo" style="background-image: url('<%= cl_image_path product.photo.key %>')">
             <div class="product-infos">
-                <h1><%= product.name.capitalize %></h1>
-                <p><%= product.price %>€</p>
+              <h1><%= product.name.capitalize %></h1>
+              <p><%= product.price %>€</p>
             </div>
         </div>
       <% end %>

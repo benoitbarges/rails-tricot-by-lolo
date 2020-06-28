@@ -32,5 +32,5 @@ import { navbarScrolled } from '../components/navbar_scrolled';
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
-  navbarScrolled();
+  // navbarScrolled();
 });

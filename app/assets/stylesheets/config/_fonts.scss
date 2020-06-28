@@ -1,10 +1,12 @@
 // Import Google fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito:400,700|Work+Sans:400,700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Delius&family=Muli:wght@300;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Slab:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap');
 
 // Define fonts for body and headers
-$body-font: "Muli", "Helvetica", sans-serif;
-$headers-font: 'Delius', cursive;
+$body-font: 'Raleway', sans-serif;
+$headers-font: 'Josefin Slab', serif;
 
 // To use a font file (.woff) uncomment following lines
 // @font-face {

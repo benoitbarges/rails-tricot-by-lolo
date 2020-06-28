@@ -2,6 +2,7 @@ const navbarScrolled = () => {
   const navbar = document.querySelector(".navbar-lewagon");
   const body = document.querySelector("body")
   const location = window.location.pathname;
+  const api = "hello"
   if (location === '/') {
     body.style.paddingTop = "0px";
   };

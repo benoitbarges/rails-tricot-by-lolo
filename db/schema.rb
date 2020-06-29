@@ -59,8 +59,10 @@ ActiveRecord::Schema.define(version: 2020_06_29_094418) do
     t.integer "price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "order_id", null: false
     t.bigint "cart_id", null: false
     t.index ["cart_id"], name: "index_order_products_on_cart_id"
+    t.index ["order_id"], name: "index_order_products_on_order_id"
     t.index ["product_id"], name: "index_order_products_on_product_id"
   end
 
@@ -71,9 +73,7 @@ ActiveRecord::Schema.define(version: 2020_06_29_094418) do
     t.string "status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "cart_id", null: false
     t.index ["address_id"], name: "index_orders_on_address_id"
-    t.index ["cart_id"], name: "index_orders_on_cart_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
@@ -107,8 +107,8 @@ ActiveRecord::Schema.define(version: 2020_06_29_094418) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "carts", "users"
   add_foreign_key "order_products", "carts"
+  add_foreign_key "order_products", "orders"
   add_foreign_key "order_products", "products"
   add_foreign_key "orders", "addresses"
-  add_foreign_key "orders", "carts"
   add_foreign_key "orders", "users"
 end

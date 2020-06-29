@@ -1,0 +1,5 @@
+<h1>Cart</h1>
+
+<% @cart.order_products.each do |order_product| %>
+<h1><%= order_product.product.name %></h1>
+<% end %>

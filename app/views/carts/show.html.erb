@@ -1,0 +1,18 @@
+<h2>Cart show</h2>
+<ul>
+  <% @cart.order_products.each do |order_product| %>
+    <li>Product: <%= order_product.product.name %>/ Price: <%= order_product.product.price %>/ Quantity: <%= order_product.quantity %>/ Total Price: <%= order_product.total_price %>
+    <ul>
+      <li>
+        <%= link_to "Add one", add_order_product_path(order_product), method: :post %>
+        <%= link_to "Reduce one", reduce_order_product_path(order_product), method: :post %>
+      </li>
+      <li>
+        <%= link_to "Remove item", order_product_path(order_product), method: :delete %>
+      </li>
+    </ul>
+  <% end %>
+</ul>
+<h3>Sub total: <%= @cart.sub_total %></h3>
+<%= link_to "Proceed to checkout", new_order_path %><br>
+<%= link_to "Empty cart", cart_path(@current_cart),method: :delete, data: {confirm: "Are you sure?"} %>

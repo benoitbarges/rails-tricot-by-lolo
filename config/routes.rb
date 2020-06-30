@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   resources :products
 
-  resources :carts, only: :show do
+  resources :carts, only: [:show] do
     resources :order_products, only: [:create]
   end
 end

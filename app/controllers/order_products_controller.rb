@@ -1,15 +1,9 @@
 class OrderProductsController < ApplicationController
 
   def create
-
-    if current_user.cart.nil?
-      @cart = Cart.create(user_id: current_user.id)
-    else
-      @cart = current_user.cart
-    end
+    @cart = current_user.cart
     authorize @cart
     @product = Product.find(params[:order_product][:product_id])
-    authorize @product
     @order_product = OrderProduct.new(order_product_params)
     authorize @order_product
     @order_product.product = @product
@@ -17,7 +11,6 @@ class OrderProductsController < ApplicationController
     if @order_product.save
       redirect_to cart_path(@cart)
     else
-      raise
       redirect_to product_path(@product)
     end
   end

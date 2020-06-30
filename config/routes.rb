@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   resources :carts, only: [:show, :destroy]
 
-  resources :addresses, only: [:new, :create]
+  resources :addresses, only: :create
 
   resources :order_products, only: [:create, :show, :destroy] do
     member do

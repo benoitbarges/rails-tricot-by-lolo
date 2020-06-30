@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_30_141421) do
+ActiveRecord::Schema.define(version: 2020_06_30_153113) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,21 +36,11 @@ ActiveRecord::Schema.define(version: 2020_06_30_141421) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "addresses", force: :cascade do |t|
-    t.string "address1"
-    t.string "address2"
-    t.string "postcode"
-    t.string "city"
-    t.string "phone_number"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "first_name"
-    t.string "last_name"
-  end
-
   create_table "carts", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_carts_on_user_id"
   end
 
   create_table "order_products", force: :cascade do |t|
@@ -59,7 +49,7 @@ ActiveRecord::Schema.define(version: 2020_06_30_141421) do
     t.integer "price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "cart_id", null: false
+    t.bigint "cart_id"
     t.bigint "order_id"
     t.index ["cart_id"], name: "index_order_products_on_cart_id"
     t.index ["order_id"], name: "index_order_products_on_order_id"
@@ -67,13 +57,11 @@ ActiveRecord::Schema.define(version: 2020_06_30_141421) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.bigint "address_id", null: false
     t.bigint "user_id", null: false
     t.integer "amount"
     t.string "status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["address_id"], name: "index_orders_on_address_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
@@ -105,9 +93,9 @@ ActiveRecord::Schema.define(version: 2020_06_30_141421) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "carts", "users"
   add_foreign_key "order_products", "carts"
   add_foreign_key "order_products", "orders"
   add_foreign_key "order_products", "products"
-  add_foreign_key "orders", "addresses"
   add_foreign_key "orders", "users"
 end

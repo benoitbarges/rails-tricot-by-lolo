@@ -13,6 +13,8 @@ class OrdersController < ApplicationController
 
   def new
     @order = Order.new
+    authorize @order
+    @address = Address.new
   end
 
   def create

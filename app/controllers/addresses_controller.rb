@@ -8,6 +8,7 @@ class AddressesController < ApplicationController
 
   def create
     @address = Address.new(address_params)
+    authorize @address
   end
 
   def edit
@@ -23,7 +24,7 @@ class AddressesController < ApplicationController
   private
 
   def address_params
-    params.require(:address).permit(:address1, :address2, :postcode, :city, :phone_number)
+    params.require(:address).permit(:address1, :address2, :postcode, :city, :phone_number, :first_name, :last_name, :email)
   end
 
   def set_product

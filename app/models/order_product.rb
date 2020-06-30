@@ -4,4 +4,8 @@ class OrderProduct < ApplicationRecord
   belongs_to :cart
 
   validates :quantity, :price, presence: true
+
+  def total_price
+    self.quantity * self.product.price
+  end
 end

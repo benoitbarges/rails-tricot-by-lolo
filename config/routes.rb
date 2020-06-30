@@ -5,7 +5,14 @@ Rails.application.routes.draw do
 
   resources :products
 
-  resources :carts, only: [:show] do
-    resources :order_products, only: [:create]
+  resources :orders
+
+  resources :carts, only: [:show, :destroy]
+
+  resources :order_products, only: [:create, :show, :destroy] do
+    member do
+      post :add
+      post :reduce
+    end
   end
 end

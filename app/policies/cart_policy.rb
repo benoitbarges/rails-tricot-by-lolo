@@ -6,10 +6,14 @@ class CartPolicy < ApplicationPolicy
   end
 
   def show?
-    record.user == user
+    true
   end
 
   def create?
+    return true
+  end
+
+  def destroy?
     return true
   end
 end

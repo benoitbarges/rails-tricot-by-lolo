@@ -8,4 +8,16 @@ class OrderProductPolicy < ApplicationPolicy
   def create?
     return true
   end
+
+  def destroy?
+    return true
+  end
+
+  def add?
+    return true
+  end
+
+  def reduce?
+    return true
+  end
 end

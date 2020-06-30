@@ -1,5 +1,5 @@
 class Address < ApplicationRecord
   has_many :orders
 
-  validates :address1, :postcode, :city, :phone_number, presence: true
+  validates :address1, :postcode, :city, :phone_number, :first_name, :last_name, presence: true
 end

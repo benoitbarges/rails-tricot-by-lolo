@@ -7,14 +7,6 @@ class ProductsController < ApplicationController
   end
 
   def show
-    if user_signed_in?
-      if current_user.cart.nil?
-        @cart = Cart.create(user_id: current_user.id)
-      else
-        @cart = current_user.cart
-      end
-      authorize @cart
-    end
   end
 
   def new

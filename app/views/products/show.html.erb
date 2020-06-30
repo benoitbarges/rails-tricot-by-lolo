@@ -16,18 +16,9 @@
         <% end %>
         <p><%= @product.price %>€</p>
         <p><%= @product.description %></p>
-        <% if user_signed_in? %>
-          <%= simple_form_for([@cart, OrderProduct.new]) do |f| %>
-            <%= f.hidden_field :price, value: @product.price %>
-            <%= f.hidden_field :product_id, value: @product.id %>
-            <%= f.hidden_field :quantity, value: 1 %>
-            <%= f.submit "Add to cart", class: "add-to-card-btn" %>
-          <% end %>
-        <% else %>
           <div class="add-to-card-btn">
             Ajouter au panier
           </div>
-        <% end %>
       </div>
     </div>
   </div>

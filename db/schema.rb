@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_30_153727) do
+ActiveRecord::Schema.define(version: 2020_07_01_133321) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,8 +45,6 @@ ActiveRecord::Schema.define(version: 2020_06_30_153727) do
 
   create_table "order_products", force: :cascade do |t|
     t.bigint "product_id", null: false
-    t.integer "quantity", default: 1
-    t.integer "price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "cart_id"
@@ -58,8 +56,7 @@ ActiveRecord::Schema.define(version: 2020_06_30_153727) do
 
   create_table "orders", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.integer "amount"
-    t.string "status"
+    t.string "status", default: "pending"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "first_name"
@@ -70,18 +67,20 @@ ActiveRecord::Schema.define(version: 2020_06_30_153727) do
     t.string "city"
     t.string "phone_number"
     t.string "email"
+    t.integer "amount_cents", default: 0, null: false
+    t.string "checkout_session_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "products", force: :cascade do |t|
     t.string "name"
-    t.integer "price"
     t.string "size"
     t.text "description"
     t.boolean "available"
     t.string "category"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "price_cents", default: 0, null: false
   end
 
   create_table "users", force: :cascade do |t|

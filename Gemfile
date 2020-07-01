@@ -36,6 +36,7 @@ gem 'simple_form'
 gem 'pundit'
 gem 'cloudinary', '~> 1.12.0'
 gem 'stripe'
+gem 'money-rails'
 
 group :development, :test do  gem 'pry-byebug'
   gem 'pry-rails'

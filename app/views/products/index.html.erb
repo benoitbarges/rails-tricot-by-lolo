@@ -1,7 +1,7 @@
 <div>
   <% @products.each do |product| %>
     <h1><%= product.name %></h1>
-    <h1><%= product.price %></h1>
+    <h1><%= humanized_money_with_symbol(product.price) %></h1>
     <h1><%= product.category %></h1>
     <h1><%= product.size %></h1>
     <%= cl_image_tag product.photo.key, height: 300, width: 400, crop: :fill if product.photo.attached?%>

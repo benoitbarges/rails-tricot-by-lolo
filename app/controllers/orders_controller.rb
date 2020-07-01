@@ -9,6 +9,7 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+    authorize @order
   end
 
   def new
@@ -19,22 +20,50 @@ class OrdersController < ApplicationController
 
   def create
     @order = Order.new(order_params)
-    @current_cart.order_products.each do |order_product|
-      @order.order_products << order_product
-      order_product.cart_id = nil
-    end
+    authorize @order
+    @order.user = current_user
+    @order.amount = @current_cart.sub_total
+    @current_cart.order_products.each { |order_product| @order.order_products << order_product }
     if @order.save
-      Cart.destroy(session[:cart_id])
-      session[:cart_id] = nil
-      redirect_to root_path
+      trigger_stripe
+      cleanup_cart
+      redirect_to new_order_payment_path(@order)
     else
-      redirect_to cart_path(@current_cart)
+      render :new
     end
   end
 
   private
 
   def order_params
-    params.require(:order).permit(:address_id, :amount, :status, :user_id)
+    params.require(:order).permit(:address1, :address2, :amount_cents, :status, :user_id, :postcode, :city, :phone_number, :first_name, :last_name, :email)
+  end
+
+  def trigger_stripe
+    session = Stripe::Checkout::Session.create(
+      payment_method_types: ['card'],
+      customer_email: current_user.email,
+      line_items: stripe_line_items(@order.order_products),
+      success_url: order_url(@order),
+      cancel_url: order_url(@order)
+    )
+    @order.update(checkout_session_id: session.id)
+  end
+
+  def stripe_line_items(order_products)
+    order_products.map do |order_product|
+      {
+        name: order_product.product.name,
+        amount: order_product.product.price_cents,
+        currency: 'eur',
+        quantity: 1
+      }
+    end
+  end
+
+  def cleanup_cart
+    @current_cart.order_products.each { |order_product| order_product.update(cart_id: nil) }
+    Cart.destroy(session[:cart_id])
+    session[:cart_id] = nil
   end
 end

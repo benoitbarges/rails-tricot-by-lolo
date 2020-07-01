@@ -11,4 +11,6 @@ class Order < ApplicationRecord
   validates :phone_number, presence: true
   validates :postcode, presence: true
   validates :city, presence: true
+
+  monetize :amount_cents
 end

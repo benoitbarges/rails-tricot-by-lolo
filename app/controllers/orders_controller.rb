@@ -19,16 +19,19 @@ class OrdersController < ApplicationController
 
   def create
     @order = Order.new(order_params)
+    authorize @order
+    @order.user = current_user
+    @order.amount = @current_cart.sub_total
     @current_cart.order_products.each do |order_product|
       @order.order_products << order_product
       order_product.cart_id = nil
     end
-    if @order.save!
+    if @order.save
       Cart.destroy(session[:cart_id])
       session[:cart_id] = nil
       redirect_to root_path
     else
-      redirect_to cart_path(@current_cart)
+      render :new
     end
   end
 

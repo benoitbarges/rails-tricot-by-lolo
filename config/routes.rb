@@ -11,10 +11,5 @@ Rails.application.routes.draw do
 
   resources :addresses, only: :create
 
-  resources :order_products, only: [:create, :show, :destroy] do
-    member do
-      post :add
-      post :reduce
-    end
-  end
+  resources :order_products, only: [:create, :show, :destroy]
 end

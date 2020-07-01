@@ -6,6 +6,6 @@ class OrderProduct < ApplicationRecord
   validates :quantity, :price, presence: true
 
   def total_price
-    self.quantity * self.product.price
+    quantity * product.price
   end
 end

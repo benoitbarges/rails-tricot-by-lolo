@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   resources :carts, only: [:show, :destroy]
 
+  resources :addresses, only: :create
+
   resources :order_products, only: [:create, :show, :destroy] do
     member do
       post :add

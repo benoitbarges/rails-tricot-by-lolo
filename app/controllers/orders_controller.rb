@@ -14,7 +14,7 @@ class OrdersController < ApplicationController
   def new
     @order = Order.new
     authorize @order
-    @address = Address.new
+    @cart = @current_cart
   end
 
   def create

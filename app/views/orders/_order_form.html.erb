@@ -1,0 +1,12 @@
+<%= simple_form_for(@order) do |f| %>
+  <%= f.input :first_name, input_html: {value: current_user.first_name}, label: false %>
+  <%= f.input :last_name, input_html: {value: current_user.last_name}, label: false %>
+  <%= f.input :email, input_html: {value: current_user.email}, label: false %>
+  <%= f.input :phone_number, placeholder: "Numéro de téléphone", label: false %>
+  <%= f.input :address1, placeholder: "Adresse", label: false %>
+  <%= f.input :address2, placeholder: "Complément d'adresse (facultatif)", label: false %>
+  <%= f.input :postcode, placeholder: "Code postal", label: false %>
+  <%= f.input :city, placeholder: "Ville", label: false %>
+  <%= f.submit "Réglement", class: "btn btn-primary", id:'add-button' %>
+<% end %>
+

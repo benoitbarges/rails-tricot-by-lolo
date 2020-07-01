@@ -6,4 +6,6 @@ class Product < ApplicationRecord
 
   validates :name, :price, :size, :description, :category, presence: true
   validates :category, inclusion: { in: CATEGORY }
+
+  monetize :price_cents
 end

@@ -6,5 +6,7 @@
   <% end %>
 </ul>
 <h3>Sub total: <%= @cart.sub_total %></h3>
-<%= link_to "Proceed to checkout", new_order_path %><br>
+<% if @cart.order_products != [] %>
+  <%= link_to "Proceed to checkout", new_order_path %><br>
+<% end %>
 <%= link_to "Empty cart", cart_path(@current_cart),method: :delete, data: {confirm: "Are you sure?"} %>

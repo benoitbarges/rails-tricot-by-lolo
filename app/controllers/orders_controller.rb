@@ -27,9 +27,10 @@ class OrdersController < ApplicationController
       order_product.cart_id = nil
     end
     if @order.save
+      trigger_stripe
       Cart.destroy(session[:cart_id])
       session[:cart_id] = nil
-      redirect_to root_path
+      redirect_to new_order_payment_path(@order)
     else
       render :new
     end
@@ -39,5 +40,28 @@ class OrdersController < ApplicationController
 
   def order_params
     params.require(:order).permit(:address1, :address2, :amount_cents, :status, :user_id, :postcode, :city, :phone_number, :first_name, :last_name, :email)
+  end
+
+  def trigger_stripe
+    session = Stripe::Checkout::Session.create(
+      payment_method_types: ['card'],
+      customer_email: current_user.email,
+      customer: current_user.id,
+      line_items: stripe_line_items(@order.order_products),
+      locale: null,
+      success_url: order_url(@order),
+      cancel_url: order_url(@order)
+    )
+    @order.update(checkout_session_id: session.id)
+  end
+
+  def stripe_line_items(order_products)
+    order_products.map do |order_product|
+      {
+        name: order_product.product.name,
+        amount: order_product.product.price_cents,
+        currency: 'eur'
+      }
+    end
   end
 end

@@ -5,7 +5,9 @@ Rails.application.routes.draw do
 
   resources :products
 
-  resources :orders
+  resources :orders, only: [:index, :show, :new, :create] do
+    resources :payments, only: :new
+  end
 
   resources :carts, only: [:show, :destroy]
 

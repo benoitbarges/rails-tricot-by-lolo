@@ -28,9 +28,11 @@ import "bootstrap";
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 import { navbarScrolled } from '../components/navbar_scrolled';
+import { navbarToggler } from '../components/navbar_toggler';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
   // navbarScrolled();
+  navbarToggler();
 });

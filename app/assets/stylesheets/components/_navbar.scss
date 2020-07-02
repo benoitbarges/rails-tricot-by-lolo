@@ -1,10 +1,11 @@
 .navbar {
   justify-content: space-between;
-  background: white;
-  padding: 0.8rem 1rem;
+  background: #B8BEDD;
   position: fixed;
   top: 0;
-  z-index: 100;
+  width: 100vw;
+  padding: 0.8rem 1rem;
+  border: 2px solid white;
   .navbar-brand {
     position: absolute;
     width: 150px;
@@ -13,16 +14,66 @@
     font-family: $headers-font;
     color: white;
     margin: 0;
-
-// .scrolled {
-//   box-shadow: 0 2px 10px 1px rgba(0,0,0,.1);
-//   background: #fff;
-// }
-
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
+  }
+  .shopping-bag a {
+    color: white
+  }
+  button {
+    background-color: transparent;
+    border: 0;
+    color: black;
+    img {
+      width: 24px;
+      transform: scaleX(-1);
+    }
+    &:focus {
+      outline: none;
+    }
+  }
 }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+.sidebar-nav {
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  border: 2px solid white;
+  background-color: #F0E6EF;
+  padding: 16px;
+  transition: left .5s ease-in;
+  button {
+    align-self: flex-start;
+  }
+  .main-nav {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    .shop-link, .main-links, .other-links {
+      .nav-link {
+        text-align: center;
+        color: $black;
+      }
+    }
+  }
+}
+
+.hiddenNav {
+  position: fixed;
+  top: 0;
+  left: -100vw;
+  transition: left .6s ease-out;
+}
+
+
+@media all and (min-width: 576px) {
+  .hiddenNav {
+    left: -320px;
+  }
+
+  .sidebar-nav {
+    width: 320px;
+  }
 }

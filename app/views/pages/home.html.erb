@@ -1,13 +1,37 @@
 <%= render'shared/banner' %>
-<div class="container mt-5 mb-5 home-container">
-    <% @products.each do |product| %>
-        <%= link_to product_path(product), class: "product-card" do %>
-          <div class="product-photo" style="background-image: url('<%= cl_image_path product.photo.key %>')">
-            <div class="product-infos">
-              <h1><%= product.name.capitalize %></h1>
-              <p><%= humanized_money_with_symbol(product.price) %></p>
+<div class="products-container">
+  <div class="products">
+      <% @products.each do |product| %>
+        <%= link_to product_path(product) do %>
+          <div class="product-card">
+            <% if product.photos.present? %>
+              <%= cl_image_tag product.photos.first.key, height: 500, width: 500, gravity: :auto, crop: :fill %>
+            <% else %>
+              <span>no images</span>
+            <% end %>
+            <div class="content">
+              <span class="name">
+                <%= product.name.upcase %>
+              </span>
+              <% if product.available %>
+                <span>
+                  <%= humanized_money_with_symbol(product.price) %>
+                </span>
+              <% else %>
+                <div class="not-available">
+                  <span class="amount">
+                    <%= humanized_money_with_symbol(product.price) %>
+                  </span>
+                  <span class="sold-out">
+                    Sur commande
+                  </span>
+                </div>
+              <% end %>
             </div>
-        </div>
+          </div>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
 </div>
+
+

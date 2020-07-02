@@ -1,28 +1,44 @@
-<body id="<%= "body-show" if @product %>">
-  <div class="container">
-    <% if current_user && current_user.admin? %>
-      <%= link_to "Editer", edit_product_path(@product) %>
-      <%= link_to "Supprimer", product_path(@product), method: :delete, data: {confirm: "Supprimer ?"} %>
-    <% end %>
-    <div class="show-container">
-      <div class="product-photo-show" style="background-image: url('<%= cl_image_path @product.photo.key %>')">
+<div class="product-container">
+  <% if current_user && current_user.admin? %>
+    <div class="admin-options">
+      <%= link_to "Editer", edit_product_path(@product), class: "add-to-cart-btn" %>
+      <%= link_to "Supprimer", product_path(@product), method: :delete, data: {confirm: "Supprimer ?"}, class: "add-to-cart-btn" %>
+    </div>
+  <% end %>
+  <div class="product-presentation">
+    <div class="images">
+      <div class="main-image">
+        <%= cl_image_tag @product.photos.first.key, height: 550, width: 550, crop: :fill, quality: 100, gravity: :auto, id:'main-image' %>
       </div>
-      <div class="product-info-show">
-        <h1><%= @product.name.capitalize %></h1>
-        <% if @product.available %>
-          <p>Disponible</p>
-        <% else %>
-          <p>Non disponible</p>
+      <div class="all-images">
+        <% @product.photos.each do |photo| %>
+          <%= cl_image_tag photo.key, height: 100, width: 100, crop: :fill, quality: 100, gravity: :auto, class:'side-image' %>
         <% end %>
-        <p><%= humanized_money_with_symbol(@product.price) %></p>
-        <p><%= @product.description %></p>
+      </div>
+    </div>
+    <div class="content">
+      <h1>
+        <%= @product.name %>
+      </h1>
+      <%= @product.description %>
+      <% if @product.available %>
+        <h2>
+          <%= humanized_money_with_symbol(@product.price) %>
+        </h2>
         <%= simple_form_for([@cart, OrderProduct.new]) do |f| %>
           <%= f.hidden_field :product_id, value: @product.id %>
           <%= f.submit "Ajouter au panier", class: "add-to-cart-btn", method: :post  %>
         <% end %>
-      </div>
+      <% else %>
+        <div class="not-available">
+          <h2 class="amount">
+            <%= humanized_money_with_symbol(@product.price) %>
+          </h2>
+          <p class="sold-out">sold out</p>
+        </div>
+      <% end %>
     </div>
   </div>
-</body>
+</div>
 
 

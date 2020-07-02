@@ -1,12 +1,32 @@
-<h2>Cart show</h2>
-<ul>
-  <% @cart.order_products.each do |order_product| %>
-    <li>Product: <%= order_product.product.name %>/ Price: <%= order_product.product.price %>
-        <%= link_to "Remove item", order_product_path(order_product), method: :delete %>
-  <% end %>
-</ul>
-<h3>Sub total: <%= @cart.sub_total %></h3>
-<% if @cart.order_products != [] %>
-  <%= link_to "Proceed to checkout", new_order_path %><br>
-<% end %>
-<%= link_to "Empty cart", cart_path(@current_cart),method: :delete, data: {confirm: "Are you sure?"} %>
+<div class="cart-container">
+  <div class="cart-info">
+    <div class="cart-details">
+      <div class="cart-details-header">
+        <h2>Mon panier</h2>
+        <h2>Prix</h2>
+      </div>
+      <% @cart.order_products.each do |order_product| %>
+        <div class="cart-order-product">
+          <%= link_to order_product_path(order_product), method: :delete, class: "cart-remove" do %>
+            <%= image_tag 'plus.svg' %>
+          <% end %>
+          <%= cl_image_tag order_product.product.photos.first.key, height: 100, width: 100, crop: :fill, quality: 100, gravity: :auto %>
+          <h5><%= order_product.product.name %></h5>
+          <h5 class="cart-order-product-price"><%= humanized_money_with_symbol(order_product.product.price) %></h5>
+        </div>
+      <% end %>
+    </div>
+    <div class="cart-checkout">
+      <div class="cart-checkout-header">
+        <h2>Total</h2>
+      </div>
+      <div class="checkout-price">
+        <h1><%= humanized_money_with_symbol(@cart.sub_total) %></h1>
+      </div>
+      <% if @cart.order_products != [] %>
+        <%= link_to "Proceed to checkout", new_order_path, class: "add-to-cart-btn" %>
+      <% end %>
+    </div>
+  </div>
+  <%= link_to "Empty cart", cart_path(@current_cart),method: :delete, data: {confirm: "Are you sure?"} %>
+</div>

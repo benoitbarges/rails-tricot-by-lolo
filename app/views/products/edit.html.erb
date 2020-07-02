@@ -9,7 +9,7 @@
   <%= f.input :description %>
   <%= f.input :category, label: "Catégorie", collection: Product::CATEGORY %>
   <%= f.input :available, label: "Disponible" %>
-  <%= f.input :photo, as: :file %>
+  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
   <%= f.submit "Edit", class: "btn btn-primary", id:'add-button' %>
   <% end %>
 </div>

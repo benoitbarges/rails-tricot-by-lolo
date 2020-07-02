@@ -1,0 +1,12 @@
+<svg width="37px" height="37px" viewBox="0 0 37 37" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g id="Desktop" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="menu" transform="translate(-1264.000000, -53.000000)" fill="#FFFFFF" fill-rule="nonzero">
+            <g id="Group-2" transform="translate(139.000000, 40.000000)">
+                <g id="icon/menu_exit" transform="translate(1124.000000, 13.000000)">
+                    <path d="M-3,20.7383297 C-4.1045695,20.7383297 -5,19.8428992 -5,18.7383297 C-5,17.6337602 -4.1045695,16.7383297 -3,16.7383297 L42,16.7383297 C43.1045695,16.7383297 44,17.6337602 44,18.7383297 C44,19.8428992 43.1045695,20.7383297 42,20.7383297 L-3,20.7383297 Z" id="Path-2" transform="translate(19.500000, 18.738330) rotate(45.000000) translate(-19.500000, -18.738330) "></path>
+                    <path d="M-3,20.7383297 C-4.1045695,20.7383297 -5,19.8428992 -5,18.7383297 C-5,17.6337602 -4.1045695,16.7383297 -3,16.7383297 L42,16.7383297 C43.1045695,16.7383297 44,17.6337602 44,18.7383297 C44,19.8428992 43.1045695,20.7383297 42,20.7383297 L-3,20.7383297 Z" id="Path-2" transform="translate(19.500000, 18.738330) rotate(-45.000000) translate(-19.500000, -18.738330) "></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

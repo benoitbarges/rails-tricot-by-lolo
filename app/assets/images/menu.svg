@@ -1,0 +1,11 @@
+<svg width="49px" height="34px" viewBox="0 0 49 34" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="header/dark_B" transform="translate(-1151.000000, -15.000000)" fill="#fff" fill-rule="nonzero">
+            <g id="icon/menu" transform="translate(1151.000000, 15.000000)">
+                <path d="M2,4 C0.8954305,4 0,3.1045695 0,2 C0,0.8954305 0.8954305,0 2,0 L47,0 C48.1045695,0 49,0.8954305 49,2 C49,3.1045695 48.1045695,4 47,4 L2,4 Z" id="Path-2"></path>
+                <path d="M15,19 C13.8954305,19 13,18.1045695 13,17 C13,15.8954305 13.8954305,15 15,15 L47,15 C48.1045695,15 49,15.8954305 49,17 C49,18.1045695 48.1045695,19 47,19 L15,19 Z" id="Path-2-Copy"></path>
+                <path d="M27,34 C25.8954305,34 25,33.1045695 25,32 C25,30.8954305 25.8954305,30 27,30 L47,30 C48.1045695,30 49,30.8954305 49,32 C49,33.1045695 48.1045695,34 47,34 L27,34 Z" id="Path-2-Copy-2"></path>
+            </g>
+        </g>
+    </g>
+</svg>

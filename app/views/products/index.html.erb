@@ -1,9 +1,34 @@
-<div>
-  <% @products.each do |product| %>
-    <h1><%= product.name %></h1>
-    <h1><%= humanized_money_with_symbol(product.price) %></h1>
-    <h1><%= product.category %></h1>
-    <h1><%= product.size %></h1>
-    <%= cl_image_tag product.photo.key, height: 300, width: 400, crop: :fill if product.photo.attached?%>
-  <% end %>
+<div class="products-container">
+  <div class="products">
+    <% @products.each do |product| %>
+      <%= link_to product_path(product) do %>
+        <div class="product-card">
+          <% if product.photo.present? %>
+            <%= cl_image_tag product.photo.key, height: 500, width: 500, gravity: :auto, crop: :fill %>
+          <% else %>
+            <span>no images</span>
+          <% end %>
+          <div class="content">
+            <span class="name">
+              <%= product.name %>
+            </span>
+            <% if product.available %>
+              <span>
+                <%= product.price %>
+              </span>
+            <% else %>
+              <div class="not-available">
+                <span class="amount">
+                  <%= product.price %>
+                </span>
+                <span class="sold-out">
+                  <p>sold out</p>
+                </span>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
 </div>

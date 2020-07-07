@@ -5,6 +5,7 @@ const navbarToggler = () => {
   buttons.forEach((button) => {
     button.addEventListener('click', (event) => {
     menu.classList.toggle('hiddenNav');
+    console.log("work");
     })
   })
 }

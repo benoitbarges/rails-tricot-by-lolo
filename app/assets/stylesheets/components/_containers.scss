@@ -12,5 +12,11 @@
 .cart-container {
   display: flex;
   flex-direction: column;
-  padding: 32px 32px;
+  width: 100%;
+}
+
+.order-new-container {
+  display: flex;
+  padding: 32px 16px;
+  justify-content: center;
 }

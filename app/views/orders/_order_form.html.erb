@@ -1,12 +1,25 @@
+<div class="order-infos">
 <%= simple_form_for(@order) do |f| %>
-  <%= f.input :first_name, input_html: {value: current_user.first_name}, label: false %>
-  <%= f.input :last_name, input_html: {value: current_user.last_name}, label: false %>
+  <div class="first-last">
+    <%= f.input :first_name, input_html: {value: current_user.first_name}, label: false %>
+    <%= f.input :last_name, input_html: {value: current_user.last_name}, label: false %>
+  </div>
   <%= f.input :email, input_html: {value: current_user.email}, label: false %>
   <%= f.input :phone_number, placeholder: "Numéro de téléphone", label: false %>
-  <%= f.input :address1, placeholder: "Adresse", label: false %>
-  <%= f.input :address2, placeholder: "Complément d'adresse (facultatif)", label: false %>
+  <div class="code-city">
+    <%= f.input :address1, placeholder: "Adresse", label: false %>
+    <%= f.input :address2, placeholder: "Complément d'adresse (facultatif)", label: false %>
+  </div>
   <%= f.input :postcode, placeholder: "Code postal", label: false %>
   <%= f.input :city, placeholder: "Ville", label: false %>
+</div>
+<div class="cart-checkout">
+  <div class="cart-checkout-header">
+    <h2>Total</h2>
+  </div>
+  <div class="checkout-price">
+    <h1><%= humanized_money_with_symbol(@cart.sub_total) %></h1>
+  </div>
   <%= f.submit "Réglement", class: "btn btn-primary", id:'add-button' %>
 <% end %>
-
+</div>

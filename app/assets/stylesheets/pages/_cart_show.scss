@@ -22,9 +22,12 @@
       border-bottom: 1px solid;
       padding: 20px 0;
 
+      .cart-order-product-price {
+        margin-left: auto;
+      }
+
       h5 {
         font-size: 1.65rem;
-        margin: 0 50px;
       }
 
       .cart-photo {

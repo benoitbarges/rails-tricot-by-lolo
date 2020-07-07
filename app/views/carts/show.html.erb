@@ -6,7 +6,7 @@
       </div>
       <% @cart.order_products.each do |order_product| %>
         <div class="cart-order-product">
-          <%= link_to order_product_path(order_product), method: :delete, class: "cart-remove" do %>
+          <%= link_to order_product_path(order_product), method: :delete, class: "cart-remove", remote: true do %>
             <%= image_tag 'effacer.svg' %>
           <% end %>
           <%= cl_image_tag order_product.product.photos.first.key, height: 100, width: 100, crop: :fill, quality: 100, gravity: :auto, class: "cart-photo" %>

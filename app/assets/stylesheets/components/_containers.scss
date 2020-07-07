@@ -8,3 +8,23 @@
   flex-direction: column;
   padding: 16px;
 }
+
+.cart-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.order-new-container {
+  padding: 32px 100px;
+}
+
+.payment-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 900px;
+  margin: auto;
+  padding: 100px;
+  text-align: center;
+}

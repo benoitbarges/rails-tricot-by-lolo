@@ -14,4 +14,6 @@ Rails.application.routes.draw do
   resources :addresses, only: :create
 
   resources :order_products, only: [:create, :show, :destroy]
+
+  mount StripeEvent::Engine, at: '/stripe-webhooks'
 end

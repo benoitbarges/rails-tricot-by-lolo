@@ -1,4 +1,5 @@
 class OrderProductsController < ApplicationController
+
   def create
     chosen_product = Product.find(params[:order_product][:product_id])
     current_cart = @current_cart
@@ -8,13 +9,12 @@ class OrderProductsController < ApplicationController
     @order_product.product = chosen_product
     authorize @order_product
 
-    if @order_product.save!
+    if @order_product.save
       redirect_to cart_path(current_cart)
     else
       redirect_to product_path(chosen_product)
     end
   end
-
 
   def destroy
     @order_product = OrderProduct.find(params[:id])

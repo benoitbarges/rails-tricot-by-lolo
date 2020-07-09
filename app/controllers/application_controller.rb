@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   include Pundit
   before_action :current_cart
+  after_action :clear_cart
 
   # Pundit: white-list approach.
   after_action :verify_authorized, except: :index, unless: :skip_pundit?
@@ -35,5 +36,9 @@ class ApplicationController < ActionController::Base
       @current_cart = Cart.create
       session[:cart_id] = @current_cart.id
     end
+  end
+
+  def clear_cart
+    ClearCartJob.perform_now
   end
 end

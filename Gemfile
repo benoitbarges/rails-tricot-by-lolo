@@ -38,6 +38,8 @@ gem 'cloudinary', '~> 1.12.0'
 gem 'stripe'
 gem 'money-rails'
 gem 'stripe_event'
+gem 'sidekiq'
+gem 'sidekiq-failures', '~> 1.0'
 
 group :development, :test do  gem 'pry-byebug'
   gem 'pry-rails'

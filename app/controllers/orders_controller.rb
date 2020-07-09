@@ -10,6 +10,7 @@ class OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
     authorize @order
+    @cart = @current_cart
   end
 
   def new

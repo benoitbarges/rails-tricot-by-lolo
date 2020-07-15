@@ -26,7 +26,7 @@
         <h1><%= humanized_money_with_symbol(@cart.sub_total) %></h1>
       </div>
       <% if @cart.order_products != [] %>
-        <%= link_to "Commander", new_order_path, class: "add-to-cart-btn" %>
+        <%= link_to "Commander", new_order_path, class: "add-to-cart-btn", data: { turbolinks: false } %>
       <% end %>
     </div>
   </div>

@@ -1,5 +1,8 @@
 <%= render'shared/banner' %>
 <div class="products-container">
+  <div class="filter_menu">
+    <%= render 'shared/filter_menu' %>
+  </div>
   <div class="products">
       <% @products.each do |product| %>
         <%= link_to product_path(product) do %>

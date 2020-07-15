@@ -29,7 +29,7 @@
 
           <%= simple_form_for([@cart, OrderProduct.new]) do |f| %>
             <%= f.hidden_field :product_id, value: @product.id %>
-            <%= f.submit "Ajouter au panier", class: "add-to-cart-btn", method: :post  %>
+            <%= f.submit "Ajouter au panier", class: "add-to-cart-btn", method: :post %>
           <% end %>
 
       <% else %>

@@ -1,3 +1,8 @@
 <div class="order-new-container">
+  <div class="breadcrumb">
+    <%= link_to "Retourner au panier", cart_path(@current_cart) %>
+  </div>
+  <div class="order-form">
     <%= render 'order_form' %>
+  </div>
 </div>

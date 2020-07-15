@@ -1,42 +1,91 @@
 .order-new-container {
-  .order-infos {
-    display: flex;
-    flex-direction: column;
-    margin: 32px 0;
-    flex: auto;
-
-    .order-info-header {
-      text-align: center;
+  .order-form {
+    .more-info {
+      display: flex;
+      flex-direction: column;
+      margin: 32px 0;
+      h2 {
+        text-align: center;
+        margin-bottom: 32px;
+      }
+      form {
+        margin: 0 auto;
+        width: 100%;
+        .first-last, .code-city {
+          display: flex;
+          justify-content: space-between;
+          .form-group {
+            width: 49%;
+          }
+        }
+      }
     }
-
-    form {
-      margin: 0 auto;
+    .cart-checkout {
+      display: flex;
+      flex-direction: column;
       width: 100%;
-      .first-last, .code-city {
+      max-width: 560px;
+      margin: 0 auto;
+      h2 {
+        text-align: center;
+      }
+      .checkout-total {
+        border-top: 1px solid black;
+        border-bottom: 1px solid black;
         display: flex;
         justify-content: space-between;
-        .form-group {
-          width: 49.5%;
+        padding: 24px 16px 24px 0;
+        margin: 48px 0;
+        span {
+          font-size: 1.5rem;
+        }
+      }
+      .cta-primary {
+        align-self: center;
+        width: 240px;
+      }
+    }
+
+  }
+}
+
+@media all and (min-width: 768px) {
+  .order-new-container {
+    .order-form {
+      .more-info {
+        form {
+          min-width: 480px;
+          max-width: 560px;
         }
       }
     }
   }
-  .cart-checkout {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
+}
 
-    .cart-checkout-total {
+
+@media all and (min-width: 992px) {
+  .order-new-container {
+    .order-form {
       display: flex;
-      border-top: 1px solid black;
-      border-bottom: 1px solid black;
-      h4 {
-        margin: 20px;
+      .more-info {
+        flex-grow: 1;
+        margin-bottom: unset;
+        h2 {
+          margin-bottom: 0.5rem;;
+        }
+        form {
+          padding: 1em 0;
+        }
       }
-    }
-    .add-to-cart-btn {
-      align-self: center;
-      margin-top: 30px;
+      .cart-checkout {
+        padding: 0 64px 0 0;
+        width: 35%;
+        margin: 32px 0;
+        .checkout-total {
+          padding: 48px 0;
+          margin: 56px 0;
+        }
+      }
     }
   }
 }
